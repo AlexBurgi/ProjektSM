@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.burgholzer.shoppingapp.MainViewModel;
 import com.burgholzer.shoppingapp.R;
@@ -67,6 +68,7 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
     }
 }

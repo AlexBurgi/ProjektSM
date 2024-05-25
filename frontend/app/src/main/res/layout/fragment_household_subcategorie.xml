@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.subcategories.CookingSubCategoryFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbSubcategoryHousehold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headlineSubcategoriesHousehold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="152dp"
+        android:text="Kategorie"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tbSubcategoryHousehold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="@+id/tbSubcategoryHousehold"
+        app:layout_constraintTop_toTopOf="@+id/tbSubcategoryHousehold" />
+
+    <Button
+        android:id="@+id/subcategoryHouseholdDevices"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="328dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="120dp"
+        android:text="Haushaltsgeräte"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/householddevices"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headlineSubcategoriesHousehold" />
+
+    <Button
+        android:id="@+id/subcategoryKitchenItems"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="328dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="20dp"
+        android:text="Küchengeräte"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/kitchen"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryHouseholdDevices" />
+
+    <Button
+        android:id="@+id/subcategoryFurniture"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="328dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="20dp"
+        android:text="Möbel"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/couch"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryKitchenItems" />
+
+    <Button
+        android:id="@+id/subcateforyCleaningAgent"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="328dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="20dp"
+        android:text="Reinigungsmittel"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/cleaning"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryFurniture" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

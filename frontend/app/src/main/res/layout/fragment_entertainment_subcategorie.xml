@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainCategoryFragment">
-
+    tools:context=".fragments.subcategories.CookingSubCategoryFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbMainCategory"
+        android:id="@+id/tbSubcategoryEntertainment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/elevationOverlayColor"
+        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,62 +18,63 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/headlineCategories"
+        android:id="@+id/headlineEntertainmentSubcategoriesEntertainment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="152dp"
         android:text="Kategorie"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tbMainCategory"
+        app:layout_constraintBottom_toBottomOf="@+id/tbSubcategoryEntertainment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tbMainCategory"
-        app:layout_constraintTop_toTopOf="@+id/tbMainCategory" />
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="@+id/tbSubcategoryEntertainment"
+        app:layout_constraintTop_toTopOf="@+id/tbSubcategoryEntertainment" />
 
     <Button
-        android:id="@+id/buttonCategorieCooking"
+        android:id="@+id/subcategoryMovieAndBooks"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="220dp"
+        android:layout_width="290dp"
         android:layout_height="73dp"
-        android:layout_marginTop="144dp"
-        android:text="Kochen"
+        android:layout_marginTop="120dp"
+        android:text="Filme / Bücher"
         android:textColorHighlight="#673AB7"
         android:textSize="24sp"
-        app:icon="@drawable/cookingcategorieimage"
+        app:icon="@drawable/book"
         app:iconSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbMainCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/headlineEntertainmentSubcategoriesEntertainment" />
 
     <Button
-        android:id="@+id/buttonCategorieHousehold"
+        android:id="@+id/subcategoryGames"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="220dp"
+        android:layout_width="290dp"
         android:layout_height="73dp"
-        android:layout_marginTop="48dp"
-        android:text="Haushalt"
+        android:layout_marginTop="20dp"
+        android:text="Spiele"
+        android:textColorHighlight="#673AB7"
         android:textSize="24sp"
-        app:icon="@drawable/householdcategorieicon"
+        app:icon="@drawable/games"
         app:iconSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCategorieCooking" />
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryMovieAndBooks" />
 
     <Button
-        android:id="@+id/buttonCategorieEntertainment"
+        android:id="@+id/subcategorySport"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="220dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="144dp"
-        android:text="Freizeit"
+        android:layout_width="290dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="20dp"
+        android:text="Sport"
+        android:textColorHighlight="#673AB7"
         android:textSize="24sp"
-        app:icon="@drawable/entertainmentcategorieicon"
+        app:icon="@drawable/sports"
         app:iconSize="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCategorieHousehold"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryGames" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

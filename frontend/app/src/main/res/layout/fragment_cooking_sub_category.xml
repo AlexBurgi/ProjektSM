@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.subcategories.CookingSubCategoryFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbSubcategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headlineSubcategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="152dp"
+        android:text="Kategorie"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tbSubcategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="@+id/tbSubcategory"
+        app:layout_constraintTop_toTopOf="@+id/tbSubcategory" />
+
+    <Button
+        android:id="@+id/subcategoryFruit"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="290dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="120dp"
+        android:text="Obst"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/fruits"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headlineSubcategories" />
+
+    <Button
+        android:id="@+id/subcategoryVegetable"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="290dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="20dp"
+        android:text="Gemüse"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/vegetable"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryFruit" />
+
+    <Button
+        android:id="@+id/subcategoryMeat"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="290dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="20dp"
+        android:text="Fleisch"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/meat"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryVegetable" />
+
+    <Button
+        android:id="@+id/subcategoryMilkProducts"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="290dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="20dp"
+        android:text="Milchprodukte"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/milkproduct"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryMeat" />
+
+    <Button
+        android:id="@+id/subcateforyPastries"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="290dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="20dp"
+        android:text="Gebäck"
+        android:textColorHighlight="#673AB7"
+        android:textSize="24sp"
+        app:icon="@drawable/pastries"
+        app:iconSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subcategoryMilkProducts" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

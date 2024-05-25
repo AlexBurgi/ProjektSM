@@ -18,7 +18,7 @@ import com.burgholzer.shoppingapp.databinding.FragmentMainCategoryBinding;
  * Use the {@link MainCategoryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainCategoryFragment extends Fragment {
+public class MainCategoryFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,6 +66,27 @@ public class MainCategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentMainCategoryBinding.inflate(inflater, container, false);
+
+        binding.buttonCategorieCooking.setOnClickListener(this);
+        binding.buttonCategorieEntertainment.setOnClickListener(this);
+        binding.buttonCategorieHousehold.setOnClickListener(this);
+
         return binding.getRoot();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == binding.buttonCategorieCooking.getId()){
+            mainViewModel.setSubcategory(1);
+            mainViewModel.showCookingSubCategory();
+        }
+        if(v.getId() == binding.buttonCategorieHousehold.getId()){
+            mainViewModel.setSubcategory(2);
+            mainViewModel.showHouseholdSubcategory();
+        }
+        if(v.getId() == binding.buttonCategorieEntertainment.getId()){
+            mainViewModel.setSubcategory(3);
+            mainViewModel.showEntertainmentSubcategory();
+        }
     }
 }

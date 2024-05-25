@@ -17,7 +17,7 @@ import com.burgholzer.shoppingapp.databinding.FragmentNewListBinding;
  * Use the {@link NewListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewListFragment extends Fragment {
+public class NewListFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,6 +66,15 @@ public class NewListFragment extends Fragment {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentNewListBinding.inflate(inflater, container, false);
 
+        binding.floatingActionButtonCheckName.setOnClickListener(this);
+
         return binding.getRoot();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == binding.floatingActionButtonCheckName.getId()){
+            mainViewModel.showMainCategory();
+        }
     }
 }

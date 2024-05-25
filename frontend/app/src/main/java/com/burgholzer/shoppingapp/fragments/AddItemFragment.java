@@ -3,21 +3,30 @@ package com.burgholzer.shoppingapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.burgholzer.shoppingapp.MainViewModel;
+import com.burgholzer.shoppingapp.ProductAdapter;
 import com.burgholzer.shoppingapp.databinding.FragmentAddItemBinding;
+import com.burgholzer.shoppingapp.model.Product;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AddItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddItemFragment extends Fragment {
+public class AddItemFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +74,41 @@ public class AddItemFragment extends Fragment {
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentAddItemBinding.inflate(inflater, container, false);
+        RecyclerView recyclerView = binding.recyclerViewAddProduct;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        ProductAdapter adapter = new ProductAdapter(new ArrayList<>());
+        recyclerView.setAdapter(adapter);
+
+        mainViewModel.fetchProductsBySubcategoryId(mainViewModel.getSubcategory());
+        // Beobachten der Früchte unabhängig vom Ladezustand
+        mainViewModel.getFruits().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
+            @Override
+            public void onChanged(List<Product> products) {
+                Log.d("AddItemFragment", "onChanged aufgerufen mit " + products.size() + " Produkten");
+                if(products != null && !products.isEmpty()) {
+                    adapter.setProducts(products);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Log.d("AddItemFragment", "Keine Produkte in der Kategorie Obst gefunden");
+                }
+            }
+        });
+
+        mainViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoading) {
+                if(!isLoading){
+                    Log.d("Status", "fertig geladen");
+                } else {
+                    Log.d("Status", "Ladet noch");
+                }
+            }
+        });
+
         return binding.getRoot();
+    }
+    @Override
+    public void onClick(View v) {
+
     }
 }
