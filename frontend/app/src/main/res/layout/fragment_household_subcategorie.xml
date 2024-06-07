@@ -17,17 +17,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/buttonBackSubCategoryHousehold"
+        android:layout_width="57dp"
+        android:layout_height="39dp"
+        app:icon="@drawable/back"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tbSubcategoryHousehold"
+        app:layout_constraintEnd_toStartOf="@+id/headlineSubcategoriesHousehold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tbSubcategoryHousehold"
+        app:layout_constraintTop_toTopOf="@+id/tbSubcategoryHousehold" />
+
     <TextView
         android:id="@+id/headlineSubcategoriesHousehold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="152dp"
         android:text="Kategorie"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/tbSubcategoryHousehold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="@+id/tbSubcategoryHousehold"
         app:layout_constraintTop_toTopOf="@+id/tbSubcategoryHousehold" />
 

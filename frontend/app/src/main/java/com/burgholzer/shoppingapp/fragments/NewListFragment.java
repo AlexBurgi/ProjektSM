@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,13 +68,18 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
         binding = FragmentNewListBinding.inflate(inflater, container, false);
 
         binding.floatingActionButtonCheckName.setOnClickListener(this);
+        binding.buttonBackNewList.setOnClickListener(this);
 
         return binding.getRoot();
     }
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == binding.buttonBackNewList.getId()) {
+            mainViewModel.showMainScreen();
+        }
         if(v.getId() == binding.floatingActionButtonCheckName.getId()){
+            mainViewModel.setListName(binding.editTextCreateNewList.getText().toString());
             mainViewModel.showMainCategory();
         }
     }

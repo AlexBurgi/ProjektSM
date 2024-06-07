@@ -151,4 +151,35 @@ public class MainViewModel extends ViewModel {
             }
         });
     }
+
+    //new list
+    private String listName;
+
+    public String getListName() {
+        return listName;
+    }
+
+    public void setListName(String listName) {
+        this.listName = listName;
+    }
+
+    //choose item
+    String productName;
+    String image;
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

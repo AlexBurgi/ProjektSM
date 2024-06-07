@@ -74,13 +74,15 @@ public class AddItemFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentAddItemBinding.inflate(inflater, container, false);
+
+        binding.buttonBackAddItem.setOnClickListener(this);
+
         RecyclerView recyclerView = binding.recyclerViewAddProduct;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        ProductAdapter adapter = new ProductAdapter(new ArrayList<>());
+        ProductAdapter adapter = new ProductAdapter(new ArrayList<>(), mainViewModel);
         recyclerView.setAdapter(adapter);
 
         mainViewModel.fetchProductsBySubcategoryId(mainViewModel.getSubcategory());
-        // Beobachten der Früchte unabhängig vom Ladezustand
         mainViewModel.getFruits().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
@@ -109,6 +111,8 @@ public class AddItemFragment extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View v) {
-
+        if(v.getId () == binding.buttonBackAddItem.getId()) {
+            mainViewModel.showMainCategory();
+        }
     }
 }

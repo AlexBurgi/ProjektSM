@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".fragments.NewListFragment">
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbCreateNewList"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -16,6 +17,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBackNewList"
+        android:layout_width="57dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        app:icon="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/tbCreateNewList"
+        app:layout_constraintEnd_toStartOf="@+id/headLineCreateNewLisst"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tbCreateNewList"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19999999" />
 
     <TextView
         android:id="@+id/headLineCreateNewLisst"

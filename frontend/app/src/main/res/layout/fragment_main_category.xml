@@ -15,7 +15,19 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBackMainCategory"
+        android:layout_width="57dp"
+        android:layout_height="39dp"
+        app:icon="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/tbMainCategory"
+        app:layout_constraintEnd_toStartOf="@+id/headlineCategories"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tbMainCategory"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

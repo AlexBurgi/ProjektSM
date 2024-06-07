@@ -71,12 +71,16 @@ public class HouseholdSubcategorieFragment extends Fragment implements View.OnCl
         binding.subcategoryKitchenItems.setOnClickListener(this);
         binding.subcategoryFurniture.setOnClickListener(this);
         binding.subcateforyCleaningAgent.setOnClickListener(this);
+        binding.buttonBackSubCategoryHousehold.setOnClickListener(this);
 
         return binding.getRoot();
     }
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == binding.buttonBackSubCategoryHousehold.getId()){
+            mainViewModel.showMainCategory();
+        }
         if(v.getId() == binding.subcategoryHouseholdDevices.getId()){
             mainViewModel.setSubcategory(6);
             mainViewModel.showAddItem();

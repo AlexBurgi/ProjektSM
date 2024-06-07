@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/fruits"
-        app:srcCompat="@drawable/fruits" />
+        app:srcCompat="@drawable/birne" />
 
     <TextView
         android:id="@+id/productName"
@@ -18,5 +18,5 @@
         android:layout_height="wrap_content"
         android:text="ProductName"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
 </LinearLayout>

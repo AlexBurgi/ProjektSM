@@ -71,13 +71,16 @@ public class CookingSubCategoryFragment extends Fragment implements View.OnClick
         binding.subcategoryMeat.setOnClickListener(this);
         binding.subcateforyPastries.setOnClickListener(this);
         binding.subcategoryMilkProducts.setOnClickListener(this);
-
+        binding.buttonBackSubCategoryCooking.setOnClickListener(this);
 
         return binding.getRoot();
     }
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == binding.buttonBackSubCategoryCooking.getId()){
+            mainViewModel.showMainCategory();
+        }
         if(v.getId() == binding.subcategoryFruit.getId()){
             mainViewModel.setSubcategory(1);
             mainViewModel.showAddItem();

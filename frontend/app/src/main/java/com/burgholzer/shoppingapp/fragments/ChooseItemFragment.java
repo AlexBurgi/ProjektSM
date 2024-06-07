@@ -8,17 +8,23 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.burgholzer.shoppingapp.MainViewModel;
+import com.burgholzer.shoppingapp.ProductAdapter;
 import com.burgholzer.shoppingapp.R;
 import com.burgholzer.shoppingapp.databinding.FragmentChooseItemBinding;
+import com.burgholzer.shoppingapp.model.Product;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ChooseItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChooseItemFragment extends Fragment {
+public class ChooseItemFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,6 +72,16 @@ public class ChooseItemFragment extends Fragment {
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentChooseItemBinding.inflate(inflater, container, false);
+
+        binding.buttonBackChooseItem.setOnClickListener(this);
+
         return binding.getRoot();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == binding.buttonBackChooseItem.getId()){
+            mainViewModel.showMainCategory();
+        }
     }
 }

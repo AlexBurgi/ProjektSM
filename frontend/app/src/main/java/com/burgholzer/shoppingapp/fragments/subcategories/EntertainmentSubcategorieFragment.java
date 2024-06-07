@@ -69,12 +69,16 @@ public class EntertainmentSubcategorieFragment extends Fragment implements View.
         binding.subcategoryMovieAndBooks.setOnClickListener(this);
         binding.subcategoryGames.setOnClickListener(this);
         binding.subcategorySport.setOnClickListener(this);
+        binding.buttonBackSubCategoryEntertainment.setOnClickListener(this);
 
         return binding.getRoot();
     }
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == binding.buttonBackSubCategoryEntertainment.getId()){
+            mainViewModel.showMainCategory();
+        }
         if(v.getId() == binding.subcategoryMovieAndBooks.getId()){
             mainViewModel.setSubcategory(10);
             mainViewModel.showAddItem();

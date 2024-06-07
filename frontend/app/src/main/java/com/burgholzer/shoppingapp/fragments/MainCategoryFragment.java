@@ -70,12 +70,16 @@ public class MainCategoryFragment extends Fragment implements View.OnClickListen
         binding.buttonCategorieCooking.setOnClickListener(this);
         binding.buttonCategorieEntertainment.setOnClickListener(this);
         binding.buttonCategorieHousehold.setOnClickListener(this);
+        binding.buttonBackMainCategory.setOnClickListener(this);
 
         return binding.getRoot();
     }
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == binding.buttonBackMainCategory.getId()){
+            mainViewModel.showNewList();
+        }
         if(v.getId() == binding.buttonCategorieCooking.getId()){
             mainViewModel.setSubcategory(1);
             mainViewModel.showCookingSubCategory();

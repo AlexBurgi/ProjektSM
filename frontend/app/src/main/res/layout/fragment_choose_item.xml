@@ -1,14 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ChooseItemFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbChooseItem"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/buttonBackChooseItem"
+        android:layout_width="57dp"
+        android:layout_height="39dp"
+        app:icon="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/tbChooseItem"
+        app:layout_constraintEnd_toStartOf="@+id/headlineChooseItem"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tbChooseItem"
+        app:layout_constraintTop_toTopOf="@+id/tbChooseItem" />
+
+    <TextView
+        android:id="@+id/headlineChooseItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Produkt hinzufügen"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tbChooseItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tbChooseItem"
+        app:layout_constraintTop_toTopOf="@+id/tbChooseItem" />
+
+    <ImageView
+        android:id="@+id/imageViewItemChooseItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="119dp"
+        android:src="@drawable/apfel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbChooseItem" />
+
+    <TextView
+        android:id="@+id/textViewItemProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="134dp"
+        android:text="Produktname"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewItemChooseItem" />
+
+    <TextView
+        android:id="@+id/textViewAmountHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Menge"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewItemProductName" />
+
+    <TextView
+        android:id="@+id/textViewAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="448dp"
+        android:text="1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbChooseItem" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMinus"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="448dp"
+        android:src="@drawable/minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbChooseItem" />
+
+    <ImageButton
+        android:id="@+id/imageButtonPlus"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="448dp"
+        android:src="@drawable/plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.613"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbChooseItem" />
+
+    <Button
+        android:id="@+id/buttonAddToList"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="141dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="51dp"
+        android:text="hinzufügen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonMinus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
