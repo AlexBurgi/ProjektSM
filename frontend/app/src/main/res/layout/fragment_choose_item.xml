@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clChooseItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ChooseItemFragment">
@@ -44,9 +45,10 @@
         android:id="@+id/imageViewItemChooseItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="119dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/apfel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbChooseItem" />
 
@@ -78,7 +80,7 @@
         android:id="@+id/textViewAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="448dp"
+        android:layout_marginTop="392dp"
         android:text="1"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +91,7 @@
         android:id="@+id/imageButtonMinus"
         android:layout_width="49dp"
         android:layout_height="45dp"
-        android:layout_marginTop="448dp"
+        android:layout_marginTop="392dp"
         android:src="@drawable/minus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.372"
@@ -100,10 +102,10 @@
         android:id="@+id/imageButtonPlus"
         android:layout_width="46dp"
         android:layout_height="41dp"
-        android:layout_marginTop="448dp"
+        android:layout_marginTop="392dp"
         android:src="@drawable/plus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.613"
+        app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbChooseItem" />
 
@@ -114,6 +116,17 @@
         android:layout_height="53dp"
         android:layout_marginTop="51dp"
         android:text="hinzufügen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonMinus" />
+
+    <Button
+        android:id="@+id/buttonDone"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="141dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="124dp"
+        android:text="fertig"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButtonMinus" />

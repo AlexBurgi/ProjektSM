@@ -1,5 +1,6 @@
 package com.burgholzer.shoppingapp.fragments.subcategories;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -66,6 +67,10 @@ public class HouseholdSubcategorieFragment extends Fragment implements View.OnCl
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentHouseholdSubcategorieBinding.inflate(inflater, container, false);
+
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clHousehold.setBackgroundColor(Color.DKGRAY);
+        }
 
         binding.subcategoryHouseholdDevices.setOnClickListener(this);
         binding.subcategoryKitchenItems.setOnClickListener(this);

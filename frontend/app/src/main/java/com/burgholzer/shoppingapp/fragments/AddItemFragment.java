@@ -1,5 +1,6 @@
 package com.burgholzer.shoppingapp.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.burgholzer.shoppingapp.MainViewModel;
-import com.burgholzer.shoppingapp.ProductAdapter;
+import com.burgholzer.shoppingapp.adapter.ProductAdapter;
 import com.burgholzer.shoppingapp.databinding.FragmentAddItemBinding;
 import com.burgholzer.shoppingapp.model.Product;
 
@@ -77,12 +78,16 @@ public class AddItemFragment extends Fragment implements View.OnClickListener {
 
         binding.buttonBackAddItem.setOnClickListener(this);
 
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clAddItem.setBackgroundColor(Color.DKGRAY);
+        }
+
         RecyclerView recyclerView = binding.recyclerViewAddProduct;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ProductAdapter adapter = new ProductAdapter(new ArrayList<>(), mainViewModel);
         recyclerView.setAdapter(adapter);
 
-        mainViewModel.fetchProductsBySubcategoryId(mainViewModel.getSubcategory());
+        mainViewModel.fetchProductsBySubcategoryId();
         mainViewModel.getFruits().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {

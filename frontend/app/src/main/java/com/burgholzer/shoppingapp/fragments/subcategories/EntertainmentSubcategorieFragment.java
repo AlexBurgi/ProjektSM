@@ -1,5 +1,6 @@
 package com.burgholzer.shoppingapp.fragments.subcategories;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -65,6 +66,10 @@ public class EntertainmentSubcategorieFragment extends Fragment implements View.
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentEntertainmentSubcategorieBinding.inflate(inflater,container,false);
+
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clEntertainment.setBackgroundColor(Color.DKGRAY);
+        }
 
         binding.subcategoryMovieAndBooks.setOnClickListener(this);
         binding.subcategoryGames.setOnClickListener(this);

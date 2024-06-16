@@ -1,11 +1,11 @@
 package com.burgholzer.shoppingapp.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,8 +67,15 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentNewListBinding.inflate(inflater, container, false);
 
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clNewList.setBackgroundColor(Color.DKGRAY);
+            binding.editTextCreateNewList.setTextColor(Color.WHITE);
+        }
+
         binding.floatingActionButtonCheckName.setOnClickListener(this);
         binding.buttonBackNewList.setOnClickListener(this);
+
+        mainViewModel.setNameList(binding.editTextCreateNewList.getText().toString());
 
         return binding.getRoot();
     }
@@ -77,9 +84,9 @@ public class NewListFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == binding.buttonBackNewList.getId()) {
             mainViewModel.showMainScreen();
-        }
-        if(v.getId() == binding.floatingActionButtonCheckName.getId()){
-            mainViewModel.setListName(binding.editTextCreateNewList.getText().toString());
+        } else if (v.getId() == binding.floatingActionButtonCheckName.getId()) {
+            String listName = binding.editTextCreateNewList.getText().toString();
+            mainViewModel.setCurrentListName(listName);
             mainViewModel.showMainCategory();
         }
     }

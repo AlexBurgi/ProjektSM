@@ -1,5 +1,6 @@
 package com.burgholzer.shoppingapp.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.burgholzer.shoppingapp.MainViewModel;
-import com.burgholzer.shoppingapp.R;
 import com.burgholzer.shoppingapp.databinding.FragmentMainCategoryBinding;
 
 /**
@@ -67,6 +67,10 @@ public class MainCategoryFragment extends Fragment implements View.OnClickListen
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentMainCategoryBinding.inflate(inflater, container, false);
 
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clMainCategory.setBackgroundColor(Color.DKGRAY);
+        }
+
         binding.buttonCategorieCooking.setOnClickListener(this);
         binding.buttonCategorieEntertainment.setOnClickListener(this);
         binding.buttonCategorieHousehold.setOnClickListener(this);
@@ -82,14 +86,17 @@ public class MainCategoryFragment extends Fragment implements View.OnClickListen
         }
         if(v.getId() == binding.buttonCategorieCooking.getId()){
             mainViewModel.setSubcategory(1);
+            mainViewModel.setMainCategoryIdentifier(1);
             mainViewModel.showCookingSubCategory();
         }
         if(v.getId() == binding.buttonCategorieHousehold.getId()){
             mainViewModel.setSubcategory(2);
+            mainViewModel.setMainCategoryIdentifier(2);
             mainViewModel.showHouseholdSubcategory();
         }
         if(v.getId() == binding.buttonCategorieEntertainment.getId()){
             mainViewModel.setSubcategory(3);
+            mainViewModel.setMainCategoryIdentifier(3);
             mainViewModel.showEntertainmentSubcategory();
         }
     }

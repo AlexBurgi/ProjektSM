@@ -1,5 +1,6 @@
 package com.burgholzer.shoppingapp.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,11 +9,8 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import com.burgholzer.shoppingapp.MainViewModel;
-import com.burgholzer.shoppingapp.R;
-import com.burgholzer.shoppingapp.databinding.FragmentMainScreenBinding;
 import com.burgholzer.shoppingapp.databinding.FragmentSettingsBinding;
 
 /**
@@ -20,7 +18,7 @@ import com.burgholzer.shoppingapp.databinding.FragmentSettingsBinding;
  * Use the {@link SettingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,6 +67,31 @@ public class SettingsFragment extends Fragment {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
 
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clSettings.setBackgroundColor(Color.DKGRAY);
+            binding.switchDarkmode.setChecked(true);
+        }
+        else if(mainViewModel.getDarkmode() == 0){
+            binding.clSettings.setBackgroundColor(Color.WHITE);
+            binding.switchDarkmode.setChecked(false);
+        }
+
+        binding.buttonBackSettings.setOnClickListener(this);
+        binding.switchDarkmode.setOnClickListener(this);
+
         return binding.getRoot();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == binding.buttonBackSettings.getId()){
+            mainViewModel.showMainScreen();
+            if(binding.switchDarkmode.isChecked()){
+                mainViewModel.setDarkmode(1);
+            }
+            else if(!binding.switchDarkmode.isChecked()){
+                mainViewModel.setDarkmode(0);
+            }
+        }
     }
 }

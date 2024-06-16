@@ -1,5 +1,6 @@
 package com.burgholzer.shoppingapp.fragments.subcategories;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -65,6 +66,10 @@ public class CookingSubCategoryFragment extends Fragment implements View.OnClick
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentCookingSubCategoryBinding.inflate(inflater, container, false);
+
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clSubcategory.setBackgroundColor(Color.DKGRAY);
+        }
 
         binding.subcategoryFruit.setOnClickListener(this);
         binding.subcategoryVegetable.setOnClickListener(this);

@@ -1,24 +1,29 @@
 package com.burgholzer.shoppingapp.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.burgholzer.shoppingapp.MainViewModel;
-import com.burgholzer.shoppingapp.R;
+import com.burgholzer.shoppingapp.adapter.ProductAdapter;
 import com.burgholzer.shoppingapp.databinding.FragmentListDetailBinding;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ListDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListDetailFragment extends Fragment {
+public class ListDetailFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,6 +35,8 @@ public class ListDetailFragment extends Fragment {
     private String mParam2;
     private MainViewModel mainViewModel;
     private FragmentListDetailBinding binding;
+    private ProductAdapter productAdapter;
+
     public ListDetailFragment() {
         // Required empty public constructor
     }
@@ -66,6 +73,41 @@ public class ListDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentListDetailBinding.inflate(inflater, container, false);
+
+        if (mainViewModel.getDarkmode() == 1) {
+            binding.clListDetail.setBackgroundColor(Color.DKGRAY);
+        }
+
+        binding.buttonBackDetailFragment.setOnClickListener(this);
+        binding.imageButtonDelete.setOnClickListener(this);
+
+        binding.textViewHeadlineDetailFragment.setText(mainViewModel.getCurrentListName().getValue());
+
+        RecyclerView recyclerView = binding.recyclerViewListDetail;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        productAdapter = new ProductAdapter(new ArrayList<>(), mainViewModel);
+        recyclerView.setAdapter(productAdapter);
+
+        mainViewModel.getCurrentListProducts().observe(getViewLifecycleOwner(), products -> {
+            productAdapter.setProducts(products);
+            productAdapter.notifyDataSetChanged();
+        });
+
+        mainViewModel.setOnClickBlocker(1);
+
         return binding.getRoot();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == binding.buttonBackDetailFragment.getId()) {
+            mainViewModel.showMainScreen();
+            mainViewModel.setOnClickBlocker(0);
+        }
+        if (v.getId() == binding.imageButtonDelete.getId()) {
+            mainViewModel.deleteCurrentList(getContext());
+            mainViewModel.showMainScreen();
+            mainViewModel.setOnClickBlocker(0);
+        }
     }
 }

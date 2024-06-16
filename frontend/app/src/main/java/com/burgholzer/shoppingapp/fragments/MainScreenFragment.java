@@ -1,20 +1,23 @@
 package com.burgholzer.shoppingapp.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 
-import com.burgholzer.shoppingapp.MainActivity;
 import com.burgholzer.shoppingapp.MainViewModel;
 import com.burgholzer.shoppingapp.R;
+import com.burgholzer.shoppingapp.adapter.AddedProductAdapter;
 import com.burgholzer.shoppingapp.databinding.FragmentMainScreenBinding;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +36,7 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
     private String mParam2;
     private FragmentMainScreenBinding binding;
     private MainViewModel mainViewModel;
-
+    private AddedProductAdapter addedProductAdapter;
     public MainScreenFragment() {
         // Required empty public constructor
     }
@@ -66,38 +69,42 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = FragmentMainScreenBinding.inflate(inflater, container, false);
 
-        mainViewModel.fetchProductsBySubcategoryId(1);
+        if(mainViewModel.getDarkmode() == 1){
+            binding.clMainScreen.setBackgroundColor(Color.DKGRAY);
+        }
 
         binding.btnBurger.setOnClickListener(this);
         binding.floatingActionButtonAddList.setOnClickListener(this);
+
+        addedProductAdapter = new AddedProductAdapter(new ArrayList<>(), mainViewModel);
+        binding.rvShoppingList.setAdapter(addedProductAdapter);
+        binding.rvShoppingList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mainViewModel.getListNames().observe(getViewLifecycleOwner(), newListNames -> {
+            addedProductAdapter.setProducts(newListNames);
+        });
 
         return binding.getRoot();
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId() ==binding.btnBurger.getId()){
-            Log.d("MainScreenFragment", "btnBurger clicked");
+        if (v.getId() == binding.btnBurger.getId()) {
             PopupMenu popupMenu = new PopupMenu(getActivity(), v);
             popupMenu.getMenuInflater().inflate(R.menu.menu_main, popupMenu.getMenu());
             popupMenu.setOnMenuItemClickListener(item -> {
-                if(item.getItemId() == R.id.menu_settings){
-                    Log.d("MainScreenFragment", "Settings menu item clicked");
+                if (item.getItemId() == R.id.menu_settings) {
                     mainViewModel.showSettings();
                     return true;
                 }
                 return false;
             });
             popupMenu.show();
-        }
-
-        if(v.getId() == binding.floatingActionButtonAddList.getId()){
-            Log.d("MainScreenFragment", "floatingActionButtonAddList clicked");
+        } else if (v.getId() == binding.floatingActionButtonAddList.getId()) {
             mainViewModel.showNewList();
         }
     }

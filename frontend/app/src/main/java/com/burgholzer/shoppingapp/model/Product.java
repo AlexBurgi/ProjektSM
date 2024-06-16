@@ -13,6 +13,11 @@ public class Product {
         this.subcategory = subcategory;
     }
 
+    public Product(String name, String image){
+        this.name = name;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }

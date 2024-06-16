@@ -1,7 +1,5 @@
 package com.burgholzer.shoppingapp.model;
 
-import java.util.Locale;
-
 public class Subcategory {
     private int id;
     private String name;
